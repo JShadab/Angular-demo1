@@ -5,7 +5,7 @@ import { Project } from '../project';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map } from 'rxjs/operators';
 import { throwError as observableThrowError, Observable } from 'rxjs';
-import { Router} from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,54 +15,47 @@ import { Router} from '@angular/router';
 export class DashboardComponent implements OnInit {
 
   //observable1:Observable<Project[]>;
-  projects:any;
+  projects: any;
 
-  constructor(private _projectService: ProjectService,private router:Router) { 
+  constructor(private _projectService: ProjectService, private router: Router) {
   }
 
   ngOnInit() {
     this.getAllProjects();
   }
 
-  createProject(){
+  createProject() {
     this._projectService.create(null);
   }
 
-  updateProject(){
+  updateProject() {
     this._projectService.update();
   }
 
-  deleteProject(){
+  deleteProject() {
     this._projectService.delete();
   }
 
-  getProject(name:string){
+  getProject(name: string) {
     this._projectService.get('');
   }
 
-  getAllProjects(){
+  getAllProjects() {
 
-   //this.projects=this._projectService.getAll();
+    this._projectService.getAll().subscribe(res => {
 
-
-   this._projectService.getAll().subscribe(res => {
-
-    if(res)
-    {
-      this.projects = res;
-
-    }
-    
-   
-  },
-    error => alert(error),
-    () => console.log('Finished')
-  );
+      if (res) {
+        this.projects = res;
+      }
+    },
+      error => alert(error),
+      () => console.log('Finished')
+    );
 
   }
 
-  onSelect(project:Project){
-    this.router.navigate(['/project',project.projectname]);
+  onSelect(project: Project) {
+    this.router.navigate(['/project', project.projectname]);
   }
 
 }

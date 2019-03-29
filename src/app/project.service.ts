@@ -73,6 +73,15 @@ export class ProjectService {
   }
 
   getAllProjectRecords(projectName: string) {
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
    
+    let url='http://192.168.0.49:5005/getImageDataByProjectName/Test';
+
+    return this._http.get(url);
   }
 }

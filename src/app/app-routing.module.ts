@@ -7,15 +7,12 @@ import { ProjectComponent } from './project/project.component';
 
 
 const routes: Routes = [
-
         
         { path: 'login',  component:LoginComponent},
         { path: 'register',  component:RegisterComponent},
         { path: 'dashboard',  component:DashboardComponent},
         { path: 'project/:name',  component:ProjectComponent},
         { path: '',  component:LoginComponent},
-
-
 ];
 
 @NgModule({

@@ -1,6 +1,42 @@
 <p>
   project works!
- 
+
 </p>
-<hr/>
+<hr />
 <h1>{{projectName}}</h1>
+
+<div class="container">
+  <table class="table table-striped">
+    <tr>
+
+      <th>S.No.</th>
+      <th>Id</th>
+      <th>Field Office Id</th>
+      <th>Image</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th>Description</th>
+      <th>City</th>
+      <th>Uploaded Date</th>
+      <th>Image Path</th>
+
+    </tr>
+    <tr *ngFor="let record of projectRecords; let i = index">
+      <td>{{i+1}}</td>
+      <td>{{record.id}} </td>
+      <td>{{record.field_officer_id}} </td>
+      <td>{{record.image}} </td>
+      <td>{{record.latitude}} </td>
+      <td>{{record.longitude}} </td>
+      <td>{{record.description}} </td>
+      <td>{{record.city}} </td>
+      <td>{{record.uploadeddate}} </td>
+      <td><img src="{{record.imagepath}}" /> </td>
+
+    </tr>
+
+  </table>
+
+  <input type="button" (click)="toExcels()" value="To Excel" class="btn btn-primary"/>
+ 
+</div>

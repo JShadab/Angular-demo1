@@ -1,13 +1,24 @@
 <p>
   dashboard works!</p>
+  <div class="container">
+<table class="table table-striped">
+  <tr>
 
-  <ol>
-    <li *ngFor="let project of projects">
-       <!-- <a routerLink= "/project/{{project.projectname}}"> -->
-        
-          <a [routerLink]="[]" (click)="onSelect(project)">{{project.projectname}} </a>
-         
-      </li>
-  </ol>
+    <th>S.No.</th>
+    <th>Name</th>
+    <th>Department</th>
+    <th>Project Manager</th>
+    <th>Creation Date</th>
+  </tr>
+  <tr *ngFor="let project of projects; let i = index">
+    <td>{{i+1}}</td>
+    <td><a [routerLink]="[]" (click)="onSelect(project)">{{project.projectname}} </a></td>
+    <td>{{project.department}}</td>
+    <td>{{project.projectmanager}}</td>
+    <td>{{project.createddate }}</td>
 
+  </tr>
+
+</table>
+</div>
 
